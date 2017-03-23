@@ -178,7 +178,7 @@ var _hmt = _hmt || [];
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                2
+                3
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -231,6 +231,282 @@ var _hmt = _hmt || [];
 
             
             <section id="main">
+    <article id="post-HR data analysis" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Data-from-insight-to-decision"><a href="#Data-from-insight-to-decision" class="headerlink" title="Data from insight to decision"></a>Data from insight to decision</h1><p><br></p>
+<h2 id="data-analysis-purpose"><a href="#data-analysis-purpose" class="headerlink" title="data analysis purpose"></a>data analysis purpose</h2><p>This data aims to understand why some of the best or most experienced<br>employees are leaving. Our company want to detect the most influencial<br>factor that can help us predict whether valuable employees will leave or<br>not.</p>
+<p><br></p>
+<p><hr><br><br></p>
+<h2 id="Analytic-solution"><a href="#Analytic-solution" class="headerlink" title="Analytic solution"></a>Analytic solution</h2><p>Firstly, we need to explain why valuable employees leave, and secondly,<br>we want to predict who will leave next.</p>
+<p>Therefore, we propose to work with the HR department to gather relevant<br>data about the employees and to communicate the significant effect that<br>could explain and predict employees’ departure.</p>
+<p><br></p>
+<p><hr><br><br></p>
+<h2 id="Measurement-and-method"><a href="#Measurement-and-method" class="headerlink" title="Measurement and method"></a>Measurement and method</h2><p>We have several index to measure our nearly 15 000 employees’ working<br>condition. They are satisfaction level, latest evaluation (yearly),<br>number of project worked on, average monthly hours, time spend in the<br>company (in years), work accident (within the past 2 years), promotion<br>within the past 5 years, department and salary.</p>
+<p><br></p>
+<p><hr><br><br></p>
+<h2 id="Exploratory-analysis"><a href="#Exploratory-analysis" class="headerlink" title="Exploratory analysis"></a>Exploratory analysis</h2><p>this dataset is from the HR department: (it doesn’t take into account<br>the person that have been fired, transferred or hired in the past year.)</p>
+<pre><code>##   satisfaction_level last_evaluation number_project average_montly_hours
+## 1               0.38            0.53              2                  157
+## 2               0.80            0.86              5                  262
+## 3               0.11            0.88              7                  272
+## 4               0.72            0.87              5                  223
+## 5               0.37            0.52              2                  159
+## 6               0.41            0.50              2                  153
+##   time_spend_company Work_accident left promotion_last_5years sales salary
+## 1                  3             0    1                     0 sales    low
+## 2                  6             0    1                     0 sales medium
+## 3                  4             0    1                     0 sales medium
+## 4                  5             0    1                     0 sales    low
+## 5                  3             0    1                     0 sales    low
+## 6                  3             0    1                     0 sales    low
+</code></pre><p><br></p>
+<p><hr><br><br></p>
+<h1 id="Data-cleaning-stage"><a href="#Data-cleaning-stage" class="headerlink" title="Data cleaning stage"></a>Data cleaning stage</h1><p>At this stage we want to need to check and clean data in order to<br>improve the quality of our analysis.</p>
+<h2 id="Data-quality-report"><a href="#Data-quality-report" class="headerlink" title="Data quality report"></a>Data quality report</h2><p>This table describe the characteristics of each features of our ABT. We<br>can see different statistical measures of central tendency and<br>variation. For example we can see that our attrition rate is equal to<br>24%, the satisfaction level is around 62% and the performance average is<br>around 71%. We see that on average people work on 3 to 4 projects a year<br>and about 200 hours per months.</p>
+<pre><code># Correct variables&apos; attributes
+data$work_accid=as.factor(data$work_accid)
+data$promo_last_5yrs=as.factor(data$promo_last_5yrs)
+data$left_or_not=as.factor(data$left_or_not)
+data$department=as.factor(data$department)
+data$salary=as.factor(data$salary)
+str(data) 
+
+## &apos;data.frame&apos;:    14999 obs. of  10 variables:
+##  $ satisf_level   : num  0.38 0.8 0.11 0.72 0.37 0.41 0.1 0.92 0.89 0.42 ...
+##  $ last_eval      : num  0.53 0.86 0.88 0.87 0.52 0.5 0.77 0.85 1 0.53 ...
+##  $ num_proj       : int  2 5 7 5 2 2 6 5 5 2 ...
+##  $ ave_mon_hrs    : int  157 262 272 223 159 153 247 259 224 142 ...
+##  $ time_spend     : int  3 6 4 5 3 3 4 5 5 3 ...
+##  $ work_accid     : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ promo_last_5yrs: Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ department     : Factor w/ 10 levels &quot;accounting&quot;,&quot;hr&quot;,..: 8 8 8 8 8 8 8 8 8 8 ...
+##  $ salary         : Factor w/ 3 levels &quot;high&quot;,&quot;low&quot;,&quot;medium&quot;: 2 3 3 2 2 2 2 2 2 2 ...
+##  $ left_or_not    : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+
+# Finding NA
+which(is.na(data), arr.ind=TRUE) #the indices of NA values
+
+##      row col
+</code></pre><p><br></p>
+<p><hr><br><br></p>
+<h2 id="First-visualisations"><a href="#First-visualisations" class="headerlink" title="First visualisations"></a>First visualisations</h2><p><br></p>
+<p>Since this dataset contains categorical and numerical variables, this<br>table contains the ways to illustrate the relationships between these<br>variables. ### Table</p>
+<h2 id="plot"><a href="#plot" class="headerlink" title="plot"></a>plot</h2><p>This graph present the correlations between each variables. The size of<br>the bubbles reveal the significance of the correlation, while the colour<br>present the direction (either positive or negative).</p>
+<p><br></p>
+<p>On average people who leave have a low satisfaction level, they work<br>more and didn’t get promoted within the past five years.</p>
+<p><hr></p>
+<h2 id="Who-is-leaving"><a href="#Who-is-leaving" class="headerlink" title="Who is leaving?"></a>Who is leaving?</h2><p>Let’s create a data frame with only the people that have left the<br>company, so we can visualise what is the distribution of each features:</p>
+<pre><code>#Data Exploration (Quantitative Explanotary Variables vs. Qualitative Binary Response Variable)
+#making table
+t_bygroup=function(d, x, y, n){
+  # an elegant way to install a missing package
+  if (!require(&quot;plyr&quot;)) install.packages(&quot;plyr&quot;)
+  t &lt;- ddply(d, y, .fun = function(dd){
+    c(Mean = mean(dd[,x],na.rm=TRUE),
+      Sd = sd(dd[,x],na.rm=TRUE),
+      min=min(dd[,x]), 
+      Q1=quantile(dd[,x],0.25),
+      Median=quantile(dd[,x],0.5),
+      Q3=quantile(dd[,x],0.75), 
+      Max=max(dd[,x])) })
+  return(t)
+}
+
+#making histogram
+hist_bygroup=function(d,xx,yy,name){
+  if (!require(&quot;ggplot2&quot;)) install.packages(&quot;ggplot2&quot;)
+  ggplot(d, aes_string(x=xx, color=yy, fill=yy))+ 
+    geom_histogram(aes(y=..density..), alpha=0.5, 
+                   position=&quot;identity&quot;)+
+    geom_density(alpha=.3)+
+    ggtitle(name)  
+}
+
+#making boxplot
+box_bygroup=function(d,xx,yy,name){
+  if (!require(&quot;ggplot2&quot;)) install.packages(&quot;ggplot2&quot;)
+  ggplot(d, aes_string(x=yy, y=xx, fill=yy)) + 
+    geom_boxplot()+
+    ggtitle(name) 
+}
+
+if (!require(&quot;Rmisc&quot;)) install.packages(&quot;Rmisc&quot;) # Arrangement for multiple ggplots
+# Histogram
+library(Rmisc)
+hist_sat=hist_bygroup(d=data, xx=&quot;satisf_level&quot;, yy=&quot;left_or_not&quot;,
+                      &quot;Histogram for satisf_level&quot;)
+</code></pre><p>the next step is to make boxplot</p>
+<pre><code># Box plot
+box_sat=box_bygroup(d=data, xx=&quot;satisf_level&quot;, yy=&quot;left_or_not&quot;,
+                    &quot;Boxplot for satisf_level&quot;)
+multiplot(plotlist = list(hist_sat,box_sat), cols = 2) 
+</code></pre><p><img src="http://i.imgur.com/KL7CtZ9.png" alt="hello"></p>
+<pre><code># Data Exploration (Qualitative Explanotary Variables vs. Qualitative Binary Response Variable)
+leave_or_not &lt;- factor(data$left_or_not,labels = c(&quot;stay&quot;,&quot;leave&quot;))
+workaccident&lt;- factor(data$work_accid,labels = c(&quot;never happened&quot;, &quot;happened&quot;))
+promotion &lt;- factor(data$promo_last_5yrs,labels = c(&quot;not promoted&quot;, &quot;promoted&quot;))
+library(gmodels)
+CrossTable(x = workaccident, y = leave_or_not, digits=3, max.width = 5, prop.r=TRUE,prop.chisq=FALSE, prop.c=FALSE,format=c(&quot;SPSS&quot;))
+
+##    Cell Contents
+## |-------------------------|
+## |                   Count |
+## |             Row Percent |
+## |           Total Percent |
+## |-------------------------|
+## 
+## Total Observations in Table:  14999 
+## ![](http://i.imgur.com/KL7CtZ9.png)
+##                | leave_or_not 
+##   workaccident |     stay  |    leave  | Row Total | 
+## ---------------|-----------|-----------|-----------|
+## never happened |     9428  |     3402  |    12830  | 
+##                |   73.484% |   26.516% |   85.539% | 
+##                |   62.858% |   22.682% |           | 
+## ---------------|-----------|-----------|-----------|
+##       happened |     2000  |      169  |     2169  | 
+##                |   92.208% |    7.792% |   14.461% | 
+##                |   13.334% |    1.127% |           | 
+## ---------------|-----------|-----------|-----------|
+##   Column Total |    11428  |     3571  |    14999  | 
+## ---------------|-----------|-----------|-----------|
+## 
+## 
+
+CrossTable(x = promotion, y = leave_or_not, digits=3, max.width = 5, prop.r=TRUE,prop.t=TRUE,prop.chisq=FALSE, prop.c=TRUE,format=c(&quot;SPSS&quot;))
+
+## 
+##    Cell Contents
+## |-------------------------|
+## |                   Count |
+## |             Row Percent |
+## |          Column Percent |
+## |           Total Percent |
+## |-------------------------|
+## 
+## Total Observations in Table:  14999 
+## 
+##              | leave_or_not 
+##    promotion |     stay  |    leave  | Row Total | 
+## -------------|-----------|-----------|-----------|
+## not promoted |    11128  |     3552  |    14680  | 
+##              |   75.804% |   24.196% |   97.873% | 
+##              |   97.375% |   99.468% |           | 
+##              |   74.192% |   23.682% |           | 
+## -------------|-----------|-----------|-----------|
+##     promoted |      300  |       19  |      319  | 
+##              |   94.044% |    5.956% |    2.127% | 
+##              |    2.625% |    0.532% |           | 
+##              |    2.000% |    0.127% |           | 
+## -------------|-----------|-----------|-----------|
+## Column Total |    11428  |     3571  |    14999  | 
+##              |   76.192% |   23.808% |           | 
+## -------------|-----------|-----------|-----------|
+## 
+## 
+</code></pre><p><br></p>
+<p>Here it’s much clearer. On average valuable employees that leave are not<br>satisfayed, work on many projects, spend many hours in the company each<br>month and aren’t promoted.</p>
+<p><br></p>
+<p><hr><br><br></p>
+<h1 id="Actionable-insights"><a href="#Actionable-insights" class="headerlink" title="Actionable insights"></a>Actionable insights</h1><p>The confusion matrix and the accuracy figures of the different model<br>show that the predictive power is very similar and seems robust. About<br>95% accuracy and for a Kappa of 84%. We decide to keep the logistic<br>regression model to lay out actionable insights. It’s a very simple<br>model and give the best results.</p>
+<p>Here is a plot that show the probability to leave of the employees and<br>their performance. We need to focus on the top right. To do that we<br>build a data table were we rank the probability to leave found in the<br>logistic regression model and the performance, we therefore find the<br>priority for the company.</p>
+<p><br></p>
+<p><hr><br><br></p>
+<center><br>Last updated on the 11/2015<br></center>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/03/24/HR data analysis/" data-id="cj0n1u6l2000030qpz9mixhgf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/03/24/HR data analysis/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/03/24/HR data analysis/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-wine-quality-data-report" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -274,7 +550,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/03/23/wine-quality-data-report/" data-id="cj0msoxlt0001asqp8mzlxgbk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/03/23/wine-quality-data-report/" data-id="cj0n1u6ld000230qpves5x5oc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -404,7 +680,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/03/22/hello-world/" data-id="cj0msoxlm0000asqpstvay0r2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/03/22/hello-world/" data-id="cj0n1u6l9000130qp1zr9k3c4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -494,6 +770,25 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/03/24/HR data analysis/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/03/24/HR data analysis/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-03-23T23:48:16.409Z" itemprop="datePublished">2017-03-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/03/23/wine-quality-data-report/" class="thumbnail">
     
     
@@ -540,7 +835,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
