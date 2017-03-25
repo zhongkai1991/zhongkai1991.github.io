@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Stat World">
 <meta property="og:description" content="This dataset aims to understand why some of the best or most experienced employees are leaving. The company want to detect the most influencial factor that can help us predict whether valuable employe">
 <meta property="og:image" content="http://yoursite.com/images/giphy2.gif">
-<meta property="og:updated_time" content="2017-03-24T21:22:06.805Z">
+<meta property="og:updated_time" content="2017-03-25T02:44:13.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HR data analysis">
 <meta name="twitter:description" content="This dataset aims to understand why some of the best or most experienced employees are leaving. The company want to detect the most influencial factor that can help us predict whether valuable employe">
@@ -375,71 +375,20 @@ hist_sat=hist_bygroup(d=data, xx=&quot;satisf_level&quot;, yy=&quot;left_or_not&
 box_sat=box_bygroup(d=data, xx=&quot;satisf_level&quot;, yy=&quot;left_or_not&quot;,
                     &quot;Boxplot for satisf_level&quot;)
 multiplot(plotlist = list(hist_sat,box_sat), cols = 2) 
-</code></pre><p><img src="http://i.imgur.com/KL7CtZ9.png" alt=""></p>
-<pre><code># Data Exploration (Qualitative Explanotary Variables vs. Qualitative Binary Response Variable)
-leave_or_not &lt;- factor(data$left_or_not,labels = c(&quot;stay&quot;,&quot;leave&quot;))
-workaccident&lt;- factor(data$work_accid,labels = c(&quot;never happened&quot;, &quot;happened&quot;))
-promotion &lt;- factor(data$promo_last_5yrs,labels = c(&quot;not promoted&quot;, &quot;promoted&quot;))
-library(gmodels)
-CrossTable(x = workaccident, y = leave_or_not, digits=3, max.width = 5, prop.r=TRUE,prop.chisq=FALSE, prop.c=FALSE,format=c(&quot;SPSS&quot;))
-
-##    Cell Contents
-## |-------------------------|
-## |                   Count |
-## |             Row Percent |
-## |           Total Percent |
-## |-------------------------|
-## 
-## Total Observations in Table:  14999 
-## ![](http://i.imgur.com/KL7CtZ9.png)
-##                | leave_or_not 
-##   workaccident |     stay  |    leave  | Row Total | 
-## ---------------|-----------|-----------|-----------|
-## never happened |     9428  |     3402  |    12830  | 
-##                |   73.484% |   26.516% |   85.539% | 
-##                |   62.858% |   22.682% |           | 
-## ---------------|-----------|-----------|-----------|
-##       happened |     2000  |      169  |     2169  | 
-##                |   92.208% |    7.792% |   14.461% | 
-##                |   13.334% |    1.127% |           | 
-## ---------------|-----------|-----------|-----------|
-##   Column Total |    11428  |     3571  |    14999  | 
-## ---------------|-----------|-----------|-----------|
-## 
-## 
-
-CrossTable(x = promotion, y = leave_or_not, digits=3, max.width = 5, prop.r=TRUE,prop.t=TRUE,prop.chisq=FALSE, prop.c=TRUE,format=c(&quot;SPSS&quot;))
-
-## 
-##    Cell Contents
-## |-------------------------|
-## |                   Count |
-## |             Row Percent |
-## |          Column Percent |
-## |           Total Percent |
-## |-------------------------|
-## 
-## Total Observations in Table:  14999 
-## 
-##              | leave_or_not 
-##    promotion |     stay  |    leave  | Row Total | 
-## -------------|-----------|-----------|-----------|
-## not promoted |    11128  |     3552  |    14680  | 
-##              |   75.804% |   24.196% |   97.873% | 
-##              |   97.375% |   99.468% |           | 
-##              |   74.192% |   23.682% |           | 
-## -------------|-----------|-----------|-----------|
-##     promoted |      300  |       19  |      319  | 
-##              |   94.044% |    5.956% |    2.127% | 
-##              |    2.625% |    0.532% |           | 
-##              |    2.000% |    0.127% |           | 
-## -------------|-----------|-----------|-----------|
-## Column Total |    11428  |     3571  |    14999  | 
-##              |   76.192% |   23.808% |           | 
-## -------------|-----------|-----------|-----------|
-## 
-## 
-</code></pre><p><br></p>
+</code></pre><p>photos:</p>
+<ul>
+<li><p><a href="http://i.imgur.com/KL7CtZ9.png" target="_blank" rel="external">http://i.imgur.com/KL7CtZ9.png</a></p>
+<h1 id="Data-Exploration-Qualitative-Explanotary-Variables-vs-Qualitative-Binary-Response-Variable"><a href="#Data-Exploration-Qualitative-Explanotary-Variables-vs-Qualitative-Binary-Response-Variable" class="headerlink" title="Data Exploration (Qualitative Explanotary Variables vs. Qualitative Binary Response Variable)"></a>Data Exploration (Qualitative Explanotary Variables vs. Qualitative Binary Response Variable)</h1><p>  leave_or_not &lt;- factor(data$left_or_not,labels = c(“stay”,”leave”))<br>  workaccident&lt;- factor(data$work_accid,labels = c(“never happened”, “happened”))<br>  promotion &lt;- factor(data$promo_last_5yrs,labels = c(“not promoted”, “promoted”))<br>  library(gmodels)<br>  CrossTable(x = workaccident, y = leave_or_not, digits=3, max.width = 5, prop.r=TRUE,prop.chisq=FALSE, prop.c=FALSE,format=c(“SPSS”))</p>
+<h2 id="Cell-Contents"><a href="#Cell-Contents" class="headerlink" title="Cell Contents"></a>Cell Contents</h2><h2 id="————————"><a href="#————————" class="headerlink" title="|————————-|"></a>|————————-|</h2><h2 id="Count"><a href="#Count" class="headerlink" title="|                   Count |"></a>|                   Count |</h2><h2 id="Row-Percent"><a href="#Row-Percent" class="headerlink" title="|             Row Percent |"></a>|             Row Percent |</h2><h2 id="Total-Percent"><a href="#Total-Percent" class="headerlink" title="|           Total Percent |"></a>|           Total Percent |</h2><h2 id="————————-1"><a href="#————————-1" class="headerlink" title="|————————-|"></a>|————————-|</h2><p>  ## </p>
+<h2 id="Total-Observations-in-Table-14999"><a href="#Total-Observations-in-Table-14999" class="headerlink" title="Total Observations in Table:  14999"></a>Total Observations in Table:  14999</h2><h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://i.imgur.com/KL7CtZ9.png" alt=""></h2><h2 id="leave-or-not"><a href="#leave-or-not" class="headerlink" title="| leave_or_not"></a>| leave_or_not</h2><h2 id="workaccident-stay-leave-Row-Total"><a href="#workaccident-stay-leave-Row-Total" class="headerlink" title="workaccident |     stay  |    leave  | Row Total |"></a>workaccident |     stay  |    leave  | Row Total |</h2><h2 id="—————-———–-———–-———–"><a href="#—————-———–-———–-———–" class="headerlink" title="—————|———–|———–|———–|"></a>—————|———–|———–|———–|</h2><h2 id="never-happened-9428-3402-12830"><a href="#never-happened-9428-3402-12830" class="headerlink" title="never happened |     9428  |     3402  |    12830  |"></a>never happened |     9428  |     3402  |    12830  |</h2><h2 id="73-484-26-516-85-539"><a href="#73-484-26-516-85-539" class="headerlink" title="|   73.484% |   26.516% |   85.539% |"></a>|   73.484% |   26.516% |   85.539% |</h2><h2 id="62-858-22-682"><a href="#62-858-22-682" class="headerlink" title="|   62.858% |   22.682% |           |"></a>|   62.858% |   22.682% |           |</h2><h2 id="—————-———–-———–-———–-1"><a href="#—————-———–-———–-———–-1" class="headerlink" title="—————|———–|———–|———–|"></a>—————|———–|———–|———–|</h2><h2 id="happened-2000-169-2169"><a href="#happened-2000-169-2169" class="headerlink" title="happened |     2000  |      169  |     2169  |"></a>happened |     2000  |      169  |     2169  |</h2><h2 id="92-208-7-792-14-461"><a href="#92-208-7-792-14-461" class="headerlink" title="|   92.208% |    7.792% |   14.461% |"></a>|   92.208% |    7.792% |   14.461% |</h2><h2 id="13-334-1-127"><a href="#13-334-1-127" class="headerlink" title="|   13.334% |    1.127% |           |"></a>|   13.334% |    1.127% |           |</h2><h2 id="—————-———–-———–-———–-2"><a href="#—————-———–-———–-———–-2" class="headerlink" title="—————|———–|———–|———–|"></a>—————|———–|———–|———–|</h2><h2 id="Column-Total-11428-3571-14999"><a href="#Column-Total-11428-3571-14999" class="headerlink" title="Column Total |    11428  |     3571  |    14999  |"></a>Column Total |    11428  |     3571  |    14999  |</h2><h2 id="—————-———–-———–-———–-3"><a href="#—————-———–-———–-———–-3" class="headerlink" title="—————|———–|———–|———–|"></a>—————|———–|———–|———–|</h2><p>  ##<br>  ## </p>
+<p>  CrossTable(x = promotion, y = leave_or_not, digits=3, max.width = 5, prop.r=TRUE,prop.t=TRUE,prop.chisq=FALSE, prop.c=TRUE,format=c(“SPSS”))</p>
+<p>  ## </p>
+<h2 id="Cell-Contents-1"><a href="#Cell-Contents-1" class="headerlink" title="Cell Contents"></a>Cell Contents</h2><h2 id="————————-2"><a href="#————————-2" class="headerlink" title="|————————-|"></a>|————————-|</h2><h2 id="Count-1"><a href="#Count-1" class="headerlink" title="|                   Count |"></a>|                   Count |</h2><h2 id="Row-Percent-1"><a href="#Row-Percent-1" class="headerlink" title="|             Row Percent |"></a>|             Row Percent |</h2><h2 id="Column-Percent"><a href="#Column-Percent" class="headerlink" title="|          Column Percent |"></a>|          Column Percent |</h2><h2 id="Total-Percent-1"><a href="#Total-Percent-1" class="headerlink" title="|           Total Percent |"></a>|           Total Percent |</h2><h2 id="————————-3"><a href="#————————-3" class="headerlink" title="|————————-|"></a>|————————-|</h2><p>  ## </p>
+<h2 id="Total-Observations-in-Table-14999-1"><a href="#Total-Observations-in-Table-14999-1" class="headerlink" title="Total Observations in Table:  14999"></a>Total Observations in Table:  14999</h2><p>  ## </p>
+<h2 id="leave-or-not-1"><a href="#leave-or-not-1" class="headerlink" title="| leave_or_not"></a>| leave_or_not</h2><h2 id="promotion-stay-leave-Row-Total"><a href="#promotion-stay-leave-Row-Total" class="headerlink" title="promotion |     stay  |    leave  | Row Total |"></a>promotion |     stay  |    leave  | Row Total |</h2><h2 id="————-———–-———–-———–"><a href="#————-———–-———–-———–" class="headerlink" title="————-|———–|———–|———–|"></a>————-|———–|———–|———–|</h2><h2 id="not-promoted-11128-3552-14680"><a href="#not-promoted-11128-3552-14680" class="headerlink" title="not promoted |    11128  |     3552  |    14680  |"></a>not promoted |    11128  |     3552  |    14680  |</h2><h2 id="75-804-24-196-97-873"><a href="#75-804-24-196-97-873" class="headerlink" title="|   75.804% |   24.196% |   97.873% |"></a>|   75.804% |   24.196% |   97.873% |</h2><h2 id="97-375-99-468"><a href="#97-375-99-468" class="headerlink" title="|   97.375% |   99.468% |           |"></a>|   97.375% |   99.468% |           |</h2><h2 id="74-192-23-682"><a href="#74-192-23-682" class="headerlink" title="|   74.192% |   23.682% |           |"></a>|   74.192% |   23.682% |           |</h2><h2 id="————-———–-———–-———–-1"><a href="#————-———–-———–-———–-1" class="headerlink" title="————-|———–|———–|———–|"></a>————-|———–|———–|———–|</h2><h2 id="promoted-300-19-319"><a href="#promoted-300-19-319" class="headerlink" title="promoted |      300  |       19  |      319  |"></a>promoted |      300  |       19  |      319  |</h2><h2 id="94-044-5-956-2-127"><a href="#94-044-5-956-2-127" class="headerlink" title="|   94.044% |    5.956% |    2.127% |"></a>|   94.044% |    5.956% |    2.127% |</h2><h2 id="2-625-0-532"><a href="#2-625-0-532" class="headerlink" title="|    2.625% |    0.532% |           |"></a>|    2.625% |    0.532% |           |</h2><h2 id="2-000-0-127"><a href="#2-000-0-127" class="headerlink" title="|    2.000% |    0.127% |           |"></a>|    2.000% |    0.127% |           |</h2><h2 id="————-———–-———–-———–-2"><a href="#————-———–-———–-———–-2" class="headerlink" title="————-|———–|———–|———–|"></a>————-|———–|———–|———–|</h2><h2 id="Column-Total-11428-3571-14999-1"><a href="#Column-Total-11428-3571-14999-1" class="headerlink" title="Column Total |    11428  |     3571  |    14999  |"></a>Column Total |    11428  |     3571  |    14999  |</h2><h2 id="76-192-23-808"><a href="#76-192-23-808" class="headerlink" title="|   76.192% |   23.808% |           |"></a>|   76.192% |   23.808% |           |</h2><h2 id="————-———–-———–-———–-3"><a href="#————-———–-———–-———–-3" class="headerlink" title="————-|———–|———–|———–|"></a>————-|———–|———–|———–|</h2><p>  ##<br>  ## </p>
+</li>
+</ul>
+<p><br></p>
 <p>Here it’s much clearer. On average valuable employees that leave are not<br>satisfayed, work on many projects, spend many hours in the company each<br>month and aren’t promoted.</p>
 <p><br></p>
 <p><hr><br><br></p>
