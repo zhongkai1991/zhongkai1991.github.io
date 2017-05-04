@@ -6,17 +6,17 @@
     
     <title>HR data analysis | Stat World</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="This dataset aims to understand why some of the best or most experienced employees are leaving. The company want to detect the most influencial factor that can help us predict whether valuable employe">
+    <meta name="description" content="HR dataset aims to understand why some of the best or most experienced employees are leaving. The company want to detect the most influencial factor that can help us predict whether valuable employees">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HR data analysis">
 <meta property="og:url" content="http://zhongkai1991.github.io/2017/03/24/HR data analysis/index.html">
 <meta property="og:site_name" content="Stat World">
-<meta property="og:description" content="This dataset aims to understand why some of the best or most experienced employees are leaving. The company want to detect the most influencial factor that can help us predict whether valuable employe">
+<meta property="og:description" content="HR dataset aims to understand why some of the best or most experienced employees are leaving. The company want to detect the most influencial factor that can help us predict whether valuable employees">
 <meta property="og:image" content="http://zhongkai1991.github.io/images/giphy2.gif">
-<meta property="og:updated_time" content="2017-04-25T03:43:10.328Z">
+<meta property="og:updated_time" content="2017-05-04T22:45:39.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HR data analysis">
-<meta name="twitter:description" content="This dataset aims to understand why some of the best or most experienced employees are leaving. The company want to detect the most influencial factor that can help us predict whether valuable employe">
+<meta name="twitter:description" content="HR dataset aims to understand why some of the best or most experienced employees are leaving. The company want to detect the most influencial factor that can help us predict whether valuable employees">
 <meta name="twitter:image" content="http://zhongkai1991.github.io/images/giphy2.gif">
     
 
@@ -279,21 +279,14 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>This dataset aims to understand why some of the best or most experienced employees are leaving. The company want to detect the most influencial factor that can help us predict whether valuable employees will leave or not.<br><a id="more"></a></p>
+            <p>HR dataset aims to understand why some of the best or most experienced employees are leaving. The company want to detect the most influencial factor that can help us predict whether valuable employees will leave or not. You can download the original data on<br><a href="https://www.kaggle.com/ludobenistant/d/ludobenistant/hr-analytics/hr-analytics-1" target="_blank" rel="external">https://www.kaggle.com/ludobenistant/d/ludobenistant/hr-analytics/hr-analytics-1</a><br><a id="more"></a></p>
 <h2 id="Analytical-procedure"><a href="#Analytical-procedure" class="headerlink" title="Analytical procedure"></a>Analytical procedure</h2><p>Firstly, we need to explain why valuable employees leave, and secondly, we want to predict who will leave next.<br>Therefore, we propose to work with the HR department to gather relevant data about the employees and to communicate the significant effect that could explain and predict employees’ departure.</p>
 <h2 id="Measurement-and-method"><a href="#Measurement-and-method" class="headerlink" title="Measurement and method"></a>Measurement and method</h2><p>We have several indexes to measure our nearly 15 000 employees’ working condition. They are satisfaction level, latest evaluation (yearly), number of project worked on, average monthly hours, time spend in the company (in years), work accident (within the past 2 years), promotion within the past 5 years, department and salary.</p>
 <p><br><br><br></p>
 <h2 id="Exploratory-analysis"><a href="#Exploratory-analysis" class="headerlink" title="Exploratory analysis"></a>Exploratory analysis</h2><p>This dataset is from the HR department: (it doesn’t take into account<br>the person that have been fired, transferred or hired in the past year.)</p>
 <h2 id="Data-cleaning-stage"><a href="#Data-cleaning-stage" class="headerlink" title="Data cleaning stage"></a>Data cleaning stage</h2><p>At this stage we want to need to check and clean data in order to improve the quality of our analysis.</p>
-<h2 id="Data-quality-report"><a href="#Data-quality-report" class="headerlink" title="Data quality report"></a>Data quality report</h2><p>This table describes the characteristics of each features of our ABT. We<br>can see different statistical measures of central tendency and<br>variation.</p>
-<pre><code># Correct variables&apos; attributes
-data$work_accid=as.factor(data$work_accid)
-data$promo_last_5yrs=as.factor(data$promo_last_5yrs)
-data$left_or_not=as.factor(data$left_or_not)
-data$department=as.factor(data$department)
-data$salary=as.factor(data$salary)
-str(data) 
-</code></pre><table>
+<h2 id="Data-quality-report"><a href="#Data-quality-report" class="headerlink" title="Data quality report"></a>Data quality report</h2><p>This table describes the characteristics of each features of our ABT. We<br>can see different statistical measures of central tendency and<br>variation.<br>    <figure class="highlight lasso"><figcaption><span>Correct variables' attibutes</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">data</span>$work_accid=as.factor(<span class="built_in">data</span>$work_accid)</div><div class="line"><span class="built_in">data</span>$promo_last_5yrs=as.factor(<span class="built_in">data</span>$promo_last_5yrs)</div><div class="line"><span class="built_in">data</span>$left_or_not=as.factor(<span class="built_in">data</span>$left_or_not)</div><div class="line"><span class="built_in">data</span>$department=as.factor(<span class="built_in">data</span>$department)</div><div class="line"><span class="built_in">data</span>$salary=as.factor(<span class="built_in">data</span>$salary)</div><div class="line">str(<span class="built_in">data</span>) </div></pre></td></tr></table></figure></p>
+<table>
 <thead>
 <tr>
 <th>variable</th>
@@ -343,9 +336,10 @@ str(data)
 </tr>
 </tbody>
 </table>
-<pre><code># Finding NA
-which(is.na(data), arr.ind=TRUE) #the indices of NA values
-row col
+<pre><code>{% codeblock Finding missing value %}
+    which(is.na(data), arr.ind=TRUE) #the indices of NA values
+    row col
+    {% endcodeblock %}
 </code></pre><p><br></p>
 <p><hr><br><br></p>
 <h2 id="First-visualisations"><a href="#First-visualisations" class="headerlink" title="First visualisations"></a>First visualisations</h2><p>In this part, we will see several plots indicating the relationship between several working conditions and the result who left.<br>On average people who leave have a low satisfaction level, they work<br>more and didn’t get promoted within the past five years.</p>
@@ -387,95 +381,18 @@ box_bygroup=function(d,xx,yy,name){
 
 if (!require(&quot;Rmisc&quot;)) install.packages(&quot;Rmisc&quot;) # Arrangement for multiple ggplots
 </code></pre><p>the next step is to make a combination of both</p>
-<pre><code># Histogram and box plot
-library(Rmisc)
-hist_sat=hist_bygroup(d=data, xx=&quot;satisf_level&quot;, yy=&quot;left_or_not&quot;,
-                      &quot;Histogram for satisf_level&quot;)
-box_sat=box_bygroup(d=data, xx=&quot;satisf_level&quot;, yy=&quot;left_or_not&quot;,
-                    &quot;Boxplot for satisf_level&quot;)
-multiplot(plotlist = list(hist_sat,box_sat), cols = 2) 
-</code></pre><p><img src="http://i.imgur.com/KL7CtZ9.png" alt="plot 1"><br>    hist_le=hist_bygroup(d=data, xx=”last_eval”, yy=”left_or_not”,”Histogram for last_eval”)<br>    box_le=box_bygroup(d=data, xx=”last_eval”, yy=”left_or_not”,”Boxplot for last_eval”)<br>    multiplot(plotlist = list(hist_le,box_le), cols = 2)<br><img src="/2017/03/24/HR data analysis/HR data/Rplotlast_eval.png" alt="plot 2"><br>    hist_np=hist_bygroup(d=data, xx=”num_proj”, yy=”left_or_not”,”Histogram for num_proj”)<br>    box_np=box_bygroup(d=data, xx=”num_proj”, yy=”left_or_not”,”Boxplot for num_proj”)<br>    multiplot(plotlist = list(hist_np,box_np), cols = 2)<br><img src="/2017/03/24/HR data analysis/HR data/Rplotnp.png" alt="plot 3"><br>    histamh=hist_bygroup(d=data, xx=”ave_mon_hrs”, yy=”left_or_not”,”Histogram for ave_mon_hrs”)<br>    boxamh=box_bygroup(d=data, xx=”ave_mon_hrs”, yy=”left_or_not”,”Boxplot for ave_mon_hrs”)<br>    multiplot(plotlist = list(histamh,boxamh), cols = 2)<br><img src="/2017/03/24/HR data analysis/HR data/Rplotamh.png" alt="plot 4"><br>    hist_ts=hist_bygroup(d=data, xx=”time_spend”, yy=”left_or_not”,”Histogram for time_spend”)<br>    box_ts=box_bygroup(d=data, xx=”time_spend”, yy=”left_or_not”,”Boxplot for time_spend”)<br>    multiplot(plotlist = list(hist_ts,box_ts), cols = 2)<br><img src="/2017/03/24/HR data analysis/HR data/Rplotts.png" alt="plot 5"></p>
-<pre><code># Data Exploration (Qualitative Explanotary Variables vs. Qualitative Binary Response Variable)
-leave_or_not &lt;- factor(data$left_or_not,labels = c(&quot;stay&quot;,&quot;leave&quot;))
-workaccident&lt;- factor(data$work_accid,labels = c(&quot;never happened&quot;, &quot;happened&quot;))
-promotion &lt;- factor(data$promo_last_5yrs,labels = c(&quot;not promoted&quot;, &quot;promoted&quot;))
-library(gmodels)
-CrossTable(x = workaccident, y = leave_or_not, digits=3, max.width = 5, prop.r=TRUE,prop.chisq=FALSE, prop.c=FALSE,format=c(&quot;SPSS&quot;))
-</code></pre><p> Total Observations in Table:  14999<br>  |Cell Contents<br>  |————————-|<br>  |                   Count |<br>  |             Row Percent |<br>  |          Column Percent |<br>  |           Total Percent |<br>  |————————-|</p>
-<table>
-<thead>
-<tr>
-<th>work accident</th>
-<th>stay</th>
-<th>leave</th>
-<th>Row Total</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>never happened</td>
-<td>9428</td>
-<td>3402</td>
-<td>12830</td>
-</tr>
-<tr>
-<td></td>
-<td>73.484%</td>
-<td>26.516%</td>
-<td>85.539%</td>
-</tr>
-<tr>
-<td></td>
-<td>62.858%</td>
-<td>22.682%</td>
-<td></td>
-</tr>
-<tr>
-<td>—————</td>
-<td>———–</td>
-<td>———–</td>
-<td>———–</td>
-</tr>
-<tr>
-<td>happened</td>
-<td>2000</td>
-<td>169</td>
-<td>2169</td>
-</tr>
-<tr>
-<td></td>
-<td>92.208%</td>
-<td>7.792%</td>
-<td>14.461%</td>
-</tr>
-<tr>
-<td></td>
-<td>13.334%</td>
-<td>1.127%</td>
-<td></td>
-</tr>
-<tr>
-<td>—————</td>
-<td>———–</td>
-<td>———–</td>
-<td>———–</td>
-</tr>
-<tr>
-<td>Column Total</td>
-<td>11428</td>
-<td>3571</td>
-<td>14999</td>
-</tr>
-<tr>
-<td>—————</td>
-<td>———–</td>
-<td>———–</td>
-<td>———–</td>
-</tr>
-</tbody>
-</table>
-<pre><code>CrossTable(x = promotion, y = leave_or_not, digits=3, max.width = 5, prop.r=TRUE,prop.t=TRUE,prop.chisq=FALSE, prop.c=TRUE,format=c(&quot;SPSS&quot;))
-</code></pre><p> Total Observations in Table:<br>   |                  leave_or_not                   |<br>   |  promotion  |     stay  |    leave  | Row Total |<br>   |————-|———–|———–|———–|<br>   |not promoted |   11128   |   3552    |    14680  |<br>   |             |   75.804% |   24.196% |   97.873% |<br>   |             |   97.375% |   99.468% |           |<br>   |             |   74.192% |   23.682% |           |<br>   |————-|———–|———–|———–|<br>   |   promoted  |    300    |    19     |    319    |<br>   |             |   94.044% |    5.956% |    2.127% |<br>   |             |    2.625% |    0.532% |           |<br>   |             |    2.000% |    0.127% |           |<br>   |————-|———–|———–|———–|<br>   |Column Total |    11428  |     3571  |    14999  |<br>   |             |   76.192% |   23.808% |           |<br>   |————-|———–|———–|———–|<br><br></p>
+<pre><code>{% codeblock Histrogram and box plot %}
+    library(Rmisc)
+    hist_sat=hist_bygroup(d=data, xx="satisf_level", yy="left_or_not",
+                          "Histogram for satisf_level")
+    box_sat=box_bygroup(d=data, xx="satisf_level", yy="left_or_not",
+                        "Boxplot for satisf_level")
+    multiplot(plotlist = list(hist_sat,box_sat), cols = 2) 
+    {% endcodeblock %}
+</code></pre><p><img src="http://i.imgur.com/KL7CtZ9.png" alt="plot 1"><br><figure class="highlight lisp"><figcaption><span>Histrogram and box plot</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hist_le=hist_bygroup(<span class="name">d=data</span>, xx=<span class="string">"last_eval"</span>, yy=<span class="string">"left_or_not"</span>,<span class="string">"Histogram for last_eval"</span>)</div><div class="line">box_le=box_bygroup(<span class="name">d=data</span>, xx=<span class="string">"last_eval"</span>, yy=<span class="string">"left_or_not"</span>,<span class="string">"Boxplot for last_eval"</span>)</div><div class="line">multiplot(<span class="name">plotlist</span> = list(<span class="name">hist_le</span>,box_le), cols = <span class="number">2</span>) </div></pre></td></tr></table></figure><br><img src="http://i.imgur.com/Mg9Nf47.png" alt=""><br><figure class="highlight lisp"><figcaption><span>Histrogram and box plot</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hist_np=hist_bygroup(<span class="name">d=data</span>, xx=<span class="string">"num_proj"</span>, yy=<span class="string">"left_or_not"</span>,<span class="string">"Histogram for num_proj"</span>)</div><div class="line">box_np=box_bygroup(<span class="name">d=data</span>, xx=<span class="string">"num_proj"</span>, yy=<span class="string">"left_or_not"</span>,<span class="string">"Boxplot for num_proj"</span>)</div><div class="line">multiplot(<span class="name">plotlist</span> = list(<span class="name">hist_np</span>,box_np), cols = <span class="number">2</span>) </div></pre></td></tr></table></figure><br><img src="http://i.imgur.com/C4KGNYO.png" alt=""><br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">histamh=hist_bygroup(<span class="name">d=data</span>, xx=<span class="string">"ave_mon_hrs"</span>, yy=<span class="string">"left_or_not"</span>,<span class="string">"Histogram for ave_mon_hrs"</span>)</div><div class="line">boxamh=box_bygroup(<span class="name">d=data</span>, xx=<span class="string">"ave_mon_hrs"</span>, yy=<span class="string">"left_or_not"</span>,<span class="string">"Boxplot for ave_mon_hrs"</span>)</div><div class="line">multiplot(<span class="name">plotlist</span> = list(<span class="name">histamh</span>,boxamh), cols = <span class="number">2</span>)</div></pre></td></tr></table></figure><br><img src="http://i.imgur.com/AShZcT8.png" alt=""><br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hist_ts=hist_bygroup(<span class="name">d=data</span>, xx=<span class="string">"time_spend"</span>, yy=<span class="string">"left_or_not"</span>,<span class="string">"Histogram for time_spend"</span>)</div><div class="line">box_ts=box_bygroup(<span class="name">d=data</span>, xx=<span class="string">"time_spend"</span>, yy=<span class="string">"left_or_not"</span>,<span class="string">"Boxplot for time_spend"</span>)</div><div class="line">multiplot(<span class="name">plotlist</span> = list(<span class="name">hist_ts</span>,box_ts), cols = <span class="number">2</span>) </div></pre></td></tr></table></figure><br><img src="http://i.imgur.com/42B1n6F.png" alt=""><br><figure class="highlight lisp"><figcaption><span>Data Exploration (Quantitative Explanotary Variables vs. Qualitative Binary Response Variable)</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">leave_or_not &lt;- factor(<span class="name">data</span>$left_or_not,labels = c(<span class="string">"stay"</span>,<span class="string">"leave"</span>))</div><div class="line">workaccident&lt;- factor(<span class="name">data</span>$work_accid,labels = c(<span class="string">"never happened"</span>, <span class="string">"happened"</span>))</div><div class="line">promotion &lt;- factor(<span class="name">data</span>$promo_last_5yrs,labels = c(<span class="string">"not promoted"</span>, <span class="string">"promoted"</span>))</div><div class="line">library(<span class="name">gmodels</span>)</div><div class="line">CrossTable(<span class="name">x</span> = workaccident, y = leave_or_not, digits=3, max.width = <span class="number">5</span>, prop.r=TRUE,prop.chisq=FALSE, prop.c=FALSE,format=c(<span class="string">"SPSS"</span>))</div></pre></td></tr></table></figure></p>
+<p> Total Observations in Table:  14999<br> | work accident |     stay  |    leave  | Row Total |<br> |—————|———–|———–|———–|<br> |never happened |     9428  |     3402  |    12830  |<br> |               |   73.484% |   26.516% |   85.539% |<br> |               |   62.858% |   22.682% |           |<br> |—————|———–|———–|———–|<br> |    happened   |     2000  |      169  |     2169  |<br> |               |   92.208% |    7.792% |   14.461% |<br> |               |   13.334% |    1.127% |           |<br> |—————|———–|———–|———–|<br> |  Column Total |    11428  |     3571  |    14999  |<br> |—————|———–|———–|———–|</p>
+<pre><code>CrossTable(x = promotion, y = leave_or_not, digits=3, max.width = 5, prop.r=TRUE,prop.t=TRUE,prop.chisq=FALSE, prop.c=TRUE,format=c(&quot;SPSS&quot;)) 
+</code></pre><p>   |                  leave_or_not                   |<br>   |  promotion  |     stay  |    leave  | Row Total |<br>   |————-|———–|———–|———–|<br>   |not promoted |   11128   |   3552    |    14680  |<br>   |             |   75.804% |   24.196% |   97.873% |<br>   |             |   97.375% |   99.468% |           |<br>   |             |   74.192% |   23.682% |           |<br>   |————-|———–|———–|———–|<br>   |   promoted  |    300    |    19     |    319    |<br>   |             |   94.044% |    5.956% |    2.127% |<br>   |             |    2.625% |    0.532% |           |<br>   |             |    2.000% |    0.127% |           |<br>   |————-|———–|———–|———–|<br>   |Column Total |    11428  |     3571  |    14999  |<br>   |             |   76.192% |   23.808% |           |<br>   |————-|———–|———–|———–|<br><br></p>
 <p>Here it’s much clearer. On average valuable employees that left weren’t satisfied, had higher yearly evaluation of performance, worked on many projects, spent more hours in the company each month，been less likely to experience work accident but weren’t promoted. What’s more,the variance of these attributes for those who left is larger than those who didn’t. This might indicate the company lost some outstanding and poor employees but the mediocre tend to stay.</p>
 <p><br></p>
 <p><hr><br><br></p>
@@ -485,7 +402,7 @@ CrossTable(x = workaccident, y = leave_or_not, digits=3, max.width = 5, prop.r=T
 grid &lt;- expand.grid(.model = c(&quot;tree&quot;,&quot;rules&quot;),.trials = c(1, 5, 10, 15, 20, 25, 30, 35),.winnow =c(TRUE,FALSE))
 cart&lt;- train(left_or_not ~ ., data = trainprocessdata, method = &quot;C5.0&quot;,metric = &quot;Kappa&quot;,trControl = ctrl,tuneGrid = grid)
 ggplot(cart) + theme_bw()
-</code></pre><p><img src="/2017/03/24/HR data analysis/HR data/decisiontree.png" alt="plot 6"><br>We choose trial=10 and rules=false for the simple reason that this makes model simplest while at the same time doesn’t show much difference in Kappa performance from other combinations of parameter.</p>
+</code></pre><p><img src="http://i.imgur.com/1TgzaNP.png" alt=""><br>We choose trial=10 and rules=false for the simple reason that this makes model simplest while at the same time doesn’t show much difference in Kappa performance from other combinations of parameter.</p>
 <pre><code>result=C5.0(left_or_not~.,data=trainprocessdata,trials=10,rules=FALSE)
 predictresult=predict(result,testprocessdata)
 mean(predictresult==testprocessdata$left_or_not)
@@ -498,7 +415,7 @@ CrossTable(testprocessdata$left_or_not,predictresult,prop.chisq = FALSE, prop.c 
 <pre><code>vrimp=varImp(result)
 vrimp[,&quot;name&quot;]=c(&quot;satisf_level&quot;,&quot;last_eval&quot;,&quot;num_proj&quot;, &quot;ave_mon_hrs&quot;,&quot;promo_last_5yrs&quot;,&quot;time_spend&quot;,&quot;salary&quot;,&quot;department&quot;,&quot;work_accid&quot;)
 barplot(vrimp$Overall[order(vrimp$Overall, decreasing = TRUE)],names.arg=vrimp$name,ylab=&quot;importance&quot;,ylim = c(0, 100), main = &quot;Variables Relative Importance&quot;,col = &quot;lightblue&quot;)
-</code></pre><p><img src="/2017/03/24/HR data analysis/HR data/treeimp.png" alt="plot 7"><br>Decision tree provides us a better method to estimate the importance of each attribute and predict employee’s action. Here we use C5.0 algorithm in that it shows superiority over other decision tree algorithem in accuracy.<br>We can see from the variable importance histogram that satisfaction level, last evaluation, number of projects and average working hour rank the highest in deciding whether employees will leave.<br>The confusion matrix and the accuracy of the decision tree model show much better result than logistic regression. Accuracy is about 98% and Kappa is about 95%.</p>
+</code></pre><p><img src="http://i.imgur.com/i8PhYla.png" alt=""><br>Decision tree provides us a better method to estimate the importance of each attribute and predict employee’s action. Here we use C5.0 algorithm in that it shows superiority over other decision tree algorithem in accuracy.<br>We can see from the variable importance histogram that satisfaction level, last evaluation, number of projects and average working hour rank the highest in deciding whether employees will leave.<br>The confusion matrix and the accuracy of the decision tree model show much better result than logistic regression. Accuracy is about 98% and Kappa is about 95%.</p>
 <h2 id="3-Bagging-Technique"><a href="#3-Bagging-Technique" class="headerlink" title="3.Bagging Technique"></a>3.Bagging Technique</h2><p>Bagging method is a little bit complex than decision because it takes the subset of the original train dataset many times (breed many independent trees) and then rank the frequency of each attribute that appears in each tree to decide which one is more essential. </p>
 <pre><code>set.seed(5303)
 bagmodel=train(left_or_not ~ ., data =trainprocessdata, method = &quot;treebag&quot;,trControl = ctrl)
@@ -537,7 +454,7 @@ kappa &lt;- kappa2(data.frame(testprocessdata$left_or_not, rfbestpredictions))$v
 kappa
 [1] 0.9323521
 varImpPlot(rfbest,type=2)
-</code></pre><p><img src="/2017/03/24/HR data analysis/HR data/rforest.png" alt="plot 8"></p>
+</code></pre><p><img src="http://i.imgur.com/53kXRrN.png" alt=""></p>
 <pre><code>CrossTable(testprocessdata$left_or_not,rfpredictions,prop.chisq = FALSE, prop.c = FALSE, prop.r = FALSE,dnn = c(&apos;actual condition&apos;, &apos;predicted condition&apos;),format=c(&quot;SPSS&quot;))
 </code></pre><p>|                 | predicted condition               |<br>|actual condition |        0  |        1  | Row Total |<br>|—————–|———–|———–|———–|<br>|               0 |     2281  |        4  |     2285  |<br>|                 |   76.059% |    0.133% |           |<br>|—————–|———–|———–|———–|<br>|               1 |       13  |      701  |      714  |<br>|                 |    0.433% |   23.374% |           |<br>|—————–|———–|———–|———–|<br>|    Column Total |     2294  |      705  |     2999  |<br>|—————–|———–|———–|———–|</p>
 <p>Random forest provides a good enough result (97% prediction accuracy and 93% Kappa) although it doesn’t seem as good as bagging and boosting.</p>
@@ -547,7 +464,7 @@ ctrl &lt;- trainControl(method = &quot;cv&quot;, number = 10,selectionFunction =
 nnetgrid&lt;- expand.grid(.decay = c(0.1, 0.01),.size = c(10,12,14,16,18))
 nnetfit &lt;- train(left_or_not ~ ., data =trainprocessdata, method = &quot;nnet&quot;,maxit = 2000,metric = &quot;Accuracy&quot;,trControl = ctrl, tuneGrid =nnetgrid, trace = F, MaxNWts = 10000)
 ggplot(nnetfit) + theme_bw()
-</code></pre><p><img src="/2017/03/24/HR data analysis/HR data/neuralnetwork.png" alt="plot 8"></p>
+</code></pre><p><img src="http://i.imgur.com/SrArdvm.png" alt=""></p>
 <p>size=12 and decay=0.1 seems to be an appropriate combination</p>
 <pre><code>nnetresult=nnet(left_or_not~.,data=trainprocessdata,size=12,maxit=2000,decay=0.1)
 nnetpredict&lt;- predict(nnetresult,testprocessdata,type= &quot;class&quot;)
