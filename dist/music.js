@@ -6,13 +6,13 @@ const ap = new APlayer({
       {
         name: "Going Home",
         artist: 'Kenny G',
-        url: 'http://www.xiami.com/widget/35815309_3492372/singlePlayer.swf',
+        url: 'http://music.163.com/song/media/outer/url?id=1615675.mp3',
         cover: 'http://perryponders.com/wp-content/uploads/2015/09/kennyg.jpg',
       },
       {
-        name: '�����֪��',
-        artist: '����ܿ',
-        url: 'http://www.xiami.com/widget/35815309_383367/singlePlayer.swf',
+        name: 'if cloud knows',
+        artist: 'Valen Hsu',
+        url: 'http://music.163.com/song/media/outer/url?id=307514.mp3',
         cover: 'https://i.ytimg.com/vi/FRbaawcE3MI/hqdefault.jpg',
       },
       {
