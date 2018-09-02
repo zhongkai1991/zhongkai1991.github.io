@@ -13,12 +13,12 @@ const ap = new APlayer({
         name: 'Ce Train Qui S'en Va',
         artist: 'H��l��ne Roll��s',
         url: 'http://fs.open.kugou.com/40866cd9832397a8d74303f1bbae9f63/5b8b5cad/G001/M08/15/15/QQ0DAFS3ow-ANBTMADjWAL-csZw098.mp3',
-        cover: 'https://img.discogs.com/9eEuM1EeroeLks4P9tVIX1JUTp4=/fit-in/600x602/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-2813263-1488036478-4219.jpeg.jpg',
+        cover: 'https://cdn.imusic.am/images/album/thumb_big/9013/1304809577/cover.jpg',
       },
       {
         name: 'If Cloud Knows',
         artist: 'Valen Hsu',
-        url: '//m128.xiami.net/330/2330/12587/383367_1512721472890.mp3?auth_key=1536462000-0-0-78d3563923b340e452209e42193f7b69',
+        url: 'http://other.web.rh01.sycdn.kuwo.cn/resource/n1/23/49/1483767899.mp3',
         cover: 'https://i.ytimg.com/vi/FRbaawcE3MI/hqdefault.jpg',
       }
     ]
