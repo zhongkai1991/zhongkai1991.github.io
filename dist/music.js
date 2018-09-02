@@ -1,7 +1,6 @@
 const ap = new APlayer({
     container: document.getElementById('aplayer'),
     fixed: true,
-    autoplay: true,
     theme: '#FADFA3',
     loop: 'all',
     order: 'random',
@@ -10,6 +9,7 @@ const ap = new APlayer({
     mutex: true,
     listFolded: false,
     listMaxHeight: 200,
+    autoplay: true,
     audio: [
       {
         name: "Going Home",
