@@ -1,7 +1,15 @@
 const ap = new APlayer({
     container: document.getElementById('aplayer'),
     fixed: true,
-    autoplay: false,
+    autoplay: true,
+    theme: '#FADFA3',
+    loop: 'all',
+    order: 'random',
+    preload: 'auto',
+    volume: 0.45,
+    mutex: true,
+    listFolded: false,
+    listMaxHeight: 200,
     audio: [
       {
         name: "Going Home",
@@ -17,9 +25,9 @@ const ap = new APlayer({
       },
       {
         name: "Ce Train Qui S'en Va",
-        artist: 'H��l��ne Roll��s',
+        artist: 'Helene Rolles',
         url: 'http://other.web.ra01.sycdn.kuwo.cn/resource/n2/128/85/8/1748874221.mp3',
-        cover: 'http://oeff2vktt.bkt.clouddn.com/image/96.jpg',
+        cover: 'http://www.mange-disque.com/disque-bg-2033-celebrite-celebrites-helene-ce-train-qui-s-en-va.jpg',
       }
     ]
 });
