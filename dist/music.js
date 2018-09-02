@@ -10,16 +10,16 @@ const ap = new APlayer({
         cover: 'http://perryponders.com/wp-content/uploads/2015/09/kennyg.jpg',
       },
       {
-        name: 'if cloud knows',
+        name: 'Ce Train Qui S'en Va',
+        artist: 'H��l��ne Roll��s',
+        url: 'http://fs.open.kugou.com/40866cd9832397a8d74303f1bbae9f63/5b8b5cad/G001/M08/15/15/QQ0DAFS3ow-ANBTMADjWAL-csZw098.mp3',
+        cover: 'https://img.discogs.com/9eEuM1EeroeLks4P9tVIX1JUTp4=/fit-in/600x602/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-2813263-1488036478-4219.jpeg.jpg',
+      },
+      {
+        name: 'If Cloud Knows',
         artist: 'Valen Hsu',
         url: '//m128.xiami.net/330/2330/12587/383367_1512721472890.mp3?auth_key=1536462000-0-0-78d3563923b340e452209e42193f7b69',
         cover: 'https://i.ytimg.com/vi/FRbaawcE3MI/hqdefault.jpg',
-      },
-      {
-        name: '������',
-        artist: '������',
-        url: 'http://up.mcyt.net/?down/46644.mp3',
-        cover: 'http://oeff2vktt.bkt.clouddn.com/image/96.jpg',
       }
     ]
 });
