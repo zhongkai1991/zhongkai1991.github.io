@@ -14,7 +14,7 @@ const ap = new APlayer({
       {
         name: "Going Home",
         artist: 'Kenny G',
-        url: 'http://fs.open.kugou.com/1d52ec9d21bf0d43b8bebee3e44cd4dd/5b8b5b2e/G007/M01/0F/0D/Rw0DAFS1hnaAPpe5AJFi9SWZmjQ224.mp3',
+        url: 'http://other.web.rb01.sycdn.kuwo.cn/resource/n1/41/81/910696535.mp3',
         cover: 'http://perryponders.com/wp-content/uploads/2015/09/kennyg.jpg',
       },
       {
